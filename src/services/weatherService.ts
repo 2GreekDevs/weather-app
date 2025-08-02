@@ -1,4 +1,4 @@
-const API_KEY = "bd5e378503939ddaee76f12ad7a97608"; // OpenWeatherMap free API key
+const API_KEY = "YOUR_API_KEY"; // OpenWeatherMap free API key
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
 
 export interface WeatherResponse {
