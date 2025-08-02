@@ -29,8 +29,8 @@ A modern weather application built with **React** that allows users to search fo
 ## 🧑‍💻 Tech Stack
 
 - React
-- HTML5 & CSS3
-- JavaScript (ES6+)
+- HTML & CSS
+- JavaScript 
 - OpenWeatherMap API
 
 ---
@@ -43,7 +43,7 @@ A modern weather application built with **React** that allows users to search fo
 git clone https://github.com/2GreekDevs/weather-app.git
 cd weather-app
 npm install
-REACT_APP_API_KEY=your_openweather_api_key
+API_KEY = "YOUR_API_KEY"; #Replace_YOUR_API_KEY_with_your_actual_API_key
 npm start
 Visit http://localhost:3000 in your browser to use the app.
 ```
