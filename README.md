@@ -47,4 +47,12 @@ API_KEY = "YOUR_API_KEY"; #Replace_YOUR_API_KEY_with_your_actual_API_key
 npm start
 Visit http://localhost:3000 in your browser to use the app.
 ```
+---
 
+🤝 About Us
+
+2GreekDevs is a Greek tech duo building creative digital tools, websites, Discord bots, and more.
+Follow us for updates:
+[📸 Instagram](https://www.instagram.com/2greekdevs/)
+[🌐 Website](2greekdevs.com)
+[💬 Discord Server](https://discord.gg/dHCvUaFAAH)
