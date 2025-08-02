@@ -2,39 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Weather App Design System - Sky and atmosphere inspired colors */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 210 25% 98%;
+    --foreground: 215 25% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 210 15% 99%;
+    --card-foreground: 215 25% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 210 15% 99%;
+    --popover-foreground: 215 25% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 214 85% 55%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 210 40% 94%;
+    --secondary-foreground: 215 25% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 15% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 35 100% 65%;
+    --accent-foreground: 215 25% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 214 20% 88%;
+    --input: 214 20% 92%;
+    --ring: 214 85% 55%;
+
+    /* Weather-specific design tokens */
+    --sky-light: 195 100% 85%;
+    --sky-medium: 214 85% 55%;
+    --sky-dark: 225 75% 35%;
+    --cloud: 210 15% 95%;
+    --sun: 35 100% 65%;
+    --sun-glow: 35 100% 75%;
+    
+    /* Beautiful gradients */
+    --gradient-sky: linear-gradient(135deg, hsl(var(--sky-light)), hsl(var(--sky-medium)));
+    --gradient-sunset: linear-gradient(135deg, hsl(var(--sun)), hsl(var(--accent)));
+    --gradient-card: linear-gradient(135deg, hsl(var(--card)), hsl(var(--cloud)));
+    
+    /* Shadows with weather theme */
+    --shadow-card: 0 8px 32px -8px hsl(var(--sky-medium) / 0.15);
+    --shadow-floating: 0 20px 40px -12px hsl(var(--sky-medium) / 0.25);
+    
+    /* Smooth transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --radius: 0.5rem;
 
@@ -56,33 +74,50 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 225 25% 8%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    --card: 225 20% 12%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
+    --popover: 225 20% 12%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 214 85% 65%;
+    --primary-foreground: 225 25% 8%;
 
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 225 15% 18%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 225 15% 18%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 35 100% 65%;
+    --accent-foreground: 225 25% 8%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 225 15% 18%;
+    --input: 225 15% 18%;
+    --ring: 214 85% 65%;
+
+    /* Dark mode weather colors */
+    --sky-light: 225 40% 25%;
+    --sky-medium: 214 85% 45%;
+    --sky-dark: 225 75% 25%;
+    --cloud: 225 15% 15%;
+    --sun: 35 100% 65%;
+    --sun-glow: 35 100% 75%;
+    
+    /* Dark gradients */
+    --gradient-sky: linear-gradient(135deg, hsl(var(--sky-dark)), hsl(var(--sky-medium)));
+    --gradient-sunset: linear-gradient(135deg, hsl(var(--sun)), hsl(var(--accent)));
+    --gradient-card: linear-gradient(135deg, hsl(var(--card)), hsl(var(--cloud)));
+    
+    /* Dark shadows */
+    --shadow-card: 0 8px 32px -8px hsl(0 0% 0% / 0.3);
+    --shadow-floating: 0 20px 40px -12px hsl(0 0% 0% / 0.4);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;

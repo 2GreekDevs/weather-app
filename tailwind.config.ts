@@ -52,6 +52,17 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// Weather-specific colors
+				sky: {
+					light: 'hsl(var(--sky-light))',
+					medium: 'hsl(var(--sky-medium))',
+					dark: 'hsl(var(--sky-dark))'
+				},
+				cloud: 'hsl(var(--cloud))',
+				sun: {
+					DEFAULT: 'hsl(var(--sun))',
+					glow: 'hsl(var(--sun-glow))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -63,10 +74,22 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				}
 			},
+			backgroundImage: {
+				'gradient-sky': 'var(--gradient-sky)',
+				'gradient-sunset': 'var(--gradient-sunset)',
+				'gradient-card': 'var(--gradient-card)'
+			},
+			boxShadow: {
+				'card': 'var(--shadow-card)',
+				'floating': 'var(--shadow-floating)'
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			transitionTimingFunction: {
+				'smooth': 'var(--transition-smooth)'
 			},
 			keyframes: {
 				'accordion-down': {
