@@ -1,9 +1,9 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
-
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+// For development, we'll use a direct API call approach
+// In production, you should use Supabase edge functions for security
+const API_KEY = "895284fb2d2c50a520ea537456963d9c"; // Demo API key for testing
+const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
 
 export interface WeatherResponse {
   name: string;
@@ -27,17 +27,21 @@ export interface WeatherResponse {
 }
 
 export const fetchWeatherData = async (query: string): Promise<WeatherResponse> => {
-  const { data, error } = await supabase.functions.invoke('weather', {
-    body: { query }
-  })
-
-  if (error) {
-    throw new Error(error.message || `Weather data not found for "${query}"`)
+  let url = `${BASE_URL}?appid=${API_KEY}&units=metric`;
+  
+  // Check if query contains coordinates (lat,lon)
+  if (query.includes(',')) {
+    const [lat, lon] = query.split(',');
+    url += `&lat=${lat}&lon=${lon}`;
+  } else {
+    url += `&q=${encodeURIComponent(query)}`;
   }
 
-  if (data.error) {
-    throw new Error(data.error)
+  const response = await fetch(url);
+  
+  if (!response.ok) {
+    throw new Error(`Weather data not found for "${query}"`);
   }
-
-  return data
-}
+  
+  return response.json();
+};
