@@ -1,5 +1,9 @@
-const API_KEY = "YOUR_API_KEY"; // OpenWeatherMap free API key
-const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 export interface WeatherResponse {
   name: string;
@@ -23,21 +27,17 @@ export interface WeatherResponse {
 }
 
 export const fetchWeatherData = async (query: string): Promise<WeatherResponse> => {
-  let url = `${BASE_URL}?appid=${API_KEY}&units=metric`;
-  
-  // Check if query contains coordinates (lat,lon)
-  if (query.includes(',')) {
-    const [lat, lon] = query.split(',');
-    url += `&lat=${lat}&lon=${lon}`;
-  } else {
-    url += `&q=${encodeURIComponent(query)}`;
+  const { data, error } = await supabase.functions.invoke('weather', {
+    body: { query }
+  })
+
+  if (error) {
+    throw new Error(error.message || `Weather data not found for "${query}"`)
   }
 
-  const response = await fetch(url);
-  
-  if (!response.ok) {
-    throw new Error(`Weather data not found for "${query}"`);
+  if (data.error) {
+    throw new Error(data.error)
   }
-  
-  return response.json();
-};
+
+  return data
+}
